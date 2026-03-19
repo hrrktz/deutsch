@@ -327,7 +327,7 @@ body{font-family:'Georgia',serif;background:var(--bg);color:var(--text);min-heig
 <div id="focus-overlay">
   <div class="fo-icon">👁️</div>
   <div class="fo-title">Du warst weg!</div>
-  <div class="fo-sub" id="fo-sub">Das Spiel hat bemerkt, dass du die Seite verlassen hast.<br>Herr Kutz kann das im Endergebnis sehen.</div>
+  <div class="fo-sub" id="fo-sub">Das Spiel hat bemerkt, dass du die Seite verlassen hast.<br>Deine Lehrerin / dein Lehrer sieht das im Ergebnis.</div>
   <button class="fo-btn" onclick="dismissFocusOverlay()">🔙 Zurück zum Spiel</button>
 </div>
 
@@ -745,8 +745,84 @@ render(){return `<div class="sprint-card">
   <button class="check-btn" onclick="checkInp(['griff','Griff'],'gs4','griff')">✓</button>
 </div>
 <div class="fb-box" id="fb"></div>
-<button class="next-btn" id="nb" onclick="nextScreen()">🏆 Zum Ergebnis!</button>
+<button class="next-btn" id="nb" onclick="nextScreen()">📋 Zur Checkliste …</button>
 </div>`;}},
+
+/* 18 ── CHECKLISTE: Was macht eine gute Geschichte aus? */
+{type:'checklist',id:'cl1',navIcon:'📋',navLabel:'Checkliste',
+render(){
+  const items=[
+    {
+      icon:'✂️',
+      title:'Kurze, knappe Sätze',
+      good:['Das Haus war alt.','Ein Schatten huschte vorbei.','Emma erstarrte.'],
+      bad:'Und dann ging Emma in das sehr alte und dunkle Haus, das am Waldrand stand, und dort war es ziemlich dunkel.',
+      tip:'Ein Satz = eine Handlung oder ein Bild. Weniger ist mehr!',
+      color:'var(--accent)',
+    },
+    {
+      icon:'⏳',
+      title:'Präteritum — die Erzählzeit',
+      good:['Emma schlich die Treppe hinauf.','Der Wind pfiff durch die Ritzen.','Ein Geräusch hallte durch den Flur.'],
+      bad:'Emma schleicht die Treppe hinauf. Der Wind pfeift.',
+      tip:'In Geschichten: Präteritum statt Präsens! Das klingt wie ein echtes Buch.',
+      color:'var(--gold)',
+    },
+    {
+      icon:'🎨',
+      title:'Spannende Adjektive',
+      good:['der <em>eisige</em> Wind','ein <em>gespenstisches</em> Geräusch','die <em>finstere</em> Treppe'],
+      bad:'der Wind, ein Geräusch, die Treppe',
+      tip:'Adjektive malen Bilder im Kopf des Lesers. Wähle gezielt — nicht jedes Nomen braucht eins!',
+      color:'var(--green)',
+    },
+    {
+      icon:'🚀',
+      title:'Interessante Satzanfänge',
+      good:['Plötzlich erlosch das Licht.','Im Keller bewegte sich etwas.','Ohne Vorwarnung knarrte die Tür.','Langsam drehte Emma sich um.'],
+      bad:'Sie ging. Sie sah. Sie hörte. Sie rannte.',
+      tip:'Beginne mit Zeitangaben, Orten oder Adverbien — nicht immer mit dem Pronomen!',
+      color:'var(--orange)',
+    },
+    {
+      icon:'🚫',
+      title:'Kein „dann … dann … dann"',
+      good:['In diesem Moment erblickte sie…','Urplötzlich brach die Stille.','Auf einmal — Stille.'],
+      bad:'Dann ging sie rein. Dann sah sie etwas. Dann rannte sie weg. Dann schrie sie.',
+      tip:'Benutze Verbindungswörter wie: <em>plötzlich · in diesem Moment · urplötzlich · auf einmal · da —</em>',
+      color:'var(--red)',
+    },
+  ];
+
+  const html=items.map((it,i)=>`
+    <div style="background:var(--panel2);border:1px solid var(--border);border-radius:var(--rs);padding:14px 15px;margin-bottom:10px;border-left:3px solid ${it.color};">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:1.1rem">${it.icon}</span>
+        <span style="font-family:sans-serif;font-size:.9rem;font-weight:700;color:${it.color}">${it.title}</span>
+        <span class="cl-check" id="clc${i}" style="margin-left:auto;font-size:1.1rem;opacity:.25">☐</span>
+      </div>
+      <div style="font-family:sans-serif;font-size:.78rem;margin-bottom:8px;">
+        <div style="color:var(--green);margin-bottom:4px;">✅ So geht's:
+          ${it.good.map(g=>`<span style="display:inline-block;background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.3);border-radius:20px;padding:2px 10px;margin:2px 2px 0;font-style:italic">${g}</span>`).join('')}
+        </div>
+        <div style="color:var(--red);">❌ Lieber nicht: <span style="font-style:italic;color:var(--muted)">${it.bad}</span></div>
+      </div>
+      <div style="font-size:.76rem;color:var(--muted);font-style:italic;border-top:1px solid var(--border);padding-top:6px;">💡 ${it.tip}</div>
+    </div>`).join('');
+
+  return `<div class="card">
+<span class="rule-icon">📋</span>
+<div class="rule-title">Checkliste — Was macht eine gute Geschichte aus?</div>
+<div style="font-family:sans-serif;font-size:.83rem;color:var(--muted);margin-bottom:14px;line-height:1.6;">
+  Hake jeden Punkt ab, den du in deiner Geschichte beachtet hast. Dann bist du bereit! ✍️
+</div>
+${html}
+<div style="background:var(--panel2);border:1.5px solid var(--gold);border-radius:var(--rs);padding:12px 14px;margin-top:4px;">
+  <div style="font-family:sans-serif;font-size:.78rem;color:var(--gold2);font-weight:700;margin-bottom:6px;">🏆 Abgehakt: <span id="cl-total" style="font-size:1rem">0</span> / 5</div>
+  <div style="display:flex;gap:5px;" id="cl-stars">${'⬜'.repeat(5)}</div>
+</div>
+</div>`;
+}},
 
 ];
 
@@ -758,7 +834,7 @@ let G={name:'',cur:0,score:0,lives:3,correct:0,answered:false,placedW:[],story:'
 function startGame(){
   G={name:document.getElementById('pname').value.trim()||'Schreiber/in',
      cur:0,score:0,lives:3,correct:0,answered:false,placedW:[],story:'',done:[]};
-  wsPickedWords=[];focusLog=[];focusLeaveTime=null;
+  wsPickedWords=[];focusLog=[];focusLeaveTime=null;clChecked=new Set();
   document.getElementById('intro').classList.add('hide');
   document.getElementById('hud').style.display='flex';
   document.getElementById('game-area').style.display='block';
@@ -828,9 +904,39 @@ function renderScreen(){
     btn.textContent=G.cur===SCREENS.length-1?'🏠 Abschließen':'➤ Weiter zur Übung …';
     btn.onclick=nextScreen;ga.appendChild(btn);
   }
+  if(sc.type==='checklist'){
+    // attach click handlers to checklist items
+    document.querySelectorAll('.cl-check').forEach((el,i)=>{
+      el.style.cursor='pointer';
+      el.onclick=()=>toggleCheck(i);
+    });
+    const btn=document.createElement('button');btn.className='rule-nav';
+    btn.textContent='🏆 Zum Ergebnis!';
+    btn.onclick=nextScreen;ga.appendChild(btn);
+  }
   const ui=document.getElementById('ui');
   if(ui)ui.addEventListener('keydown',e=>{if(e.key==='Enter')ui.nextElementSibling?.click();});
   window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ── CHECKLISTE ABHAKEN ── */
+let clChecked=new Set();
+function toggleCheck(i){
+  const el=document.getElementById('clc'+i);
+  if(!el)return;
+  if(clChecked.has(i)){
+    clChecked.delete(i);
+    el.textContent='☐';el.style.opacity='.25';
+  } else {
+    clChecked.add(i);
+    el.textContent='☑';el.style.opacity='1';el.style.color='var(--green)';
+    el.style.animation='pop .25s ease';
+  }
+  const tot=clChecked.size;
+  const totEl=document.getElementById('cl-total');
+  if(totEl)totEl.textContent=tot;
+  const starsEl=document.getElementById('cl-stars');
+  if(starsEl)starsEl.innerHTML='⭐'.repeat(tot)+'⬜'.repeat(5-tot);
 }
 
 /* ── WORTSPEICHER PICK-6 ── */
@@ -1080,11 +1186,11 @@ function showEnd(){
   document.getElementById('game-area').style.display='none';
   document.getElementById('nav-bar').style.display='none';
   const end=document.getElementById('end-screen');end.classList.add('show');
-  const total=SCREENS.filter(s=>s.type!=='rule'&&s.type!=='wordspeicher').length;
+  const total=SCREENS.filter(s=>s.type!=='rule'&&s.type!=='wordspeicher'&&s.type!=='checklist').length;
   const pct=G.correct/total;
   let medal='📚',stars='💫',title='Weiter üben!',sub='Du bist auf dem richtigen Weg!';
-  if(pct>=.9){medal='🏆';stars='⭐⭐⭐';title='Meistererzähler*in der geheimnisvollen Dinge!';sub='Das Präteritum sitzt — und deine Geschichte begeistert!';}
-  else if(pct>=.7){medal='🥇';stars='⭐⭐';title='Super Geschichtenerzähler*in!';sub='Sehr gut! Noch etwas üben, dann wird es perfekt.';}
+  if(pct>=.9){medal='🏆';stars='⭐⭐⭐';title='Meister/in der geheimnisvollen Geschichten!';sub='Das Präteritum sitzt — und deine Geschichte begeistert!';}
+  else if(pct>=.7){medal='🥇';stars='⭐⭐';title='Mutige/r Schreiber/in!';sub='Sehr gut! Noch etwas üben, dann wird es perfekt.';}
   else if(pct>=.5){medal='🥈';stars='⭐';title='Auf gutem Weg!';sub='Die Regeln sind klar — beim nächsten Mal klappt es noch besser!';}
   document.getElementById('e-medal').textContent=medal;
   document.getElementById('e-stars').textContent=stars;
