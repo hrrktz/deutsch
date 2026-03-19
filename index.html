@@ -1189,8 +1189,8 @@ function showEnd(){
   const total=SCREENS.filter(s=>s.type!=='rule'&&s.type!=='wordspeicher'&&s.type!=='checklist').length;
   const pct=G.correct/total;
   let medal='📚',stars='💫',title='Weiter üben!',sub='Du bist auf dem richtigen Weg!';
-  if(pct>=.9){medal='🏆';stars='⭐⭐⭐';title='Meister/in der geheimnisvollen Geschichten!';sub='Das Präteritum sitzt — und deine Geschichte begeistert!';}
-  else if(pct>=.7){medal='🥇';stars='⭐⭐';title='Mutige/r Schreiber/in!';sub='Sehr gut! Noch etwas üben, dann wird es perfekt.';}
+  if(pct>=.9){medal='🏆';stars='⭐⭐⭐';title='Meistererzähler*in der geheimnisvollen Geschichten!';sub='Das Präteritum sitzt — und deine Geschichte begeistert!';}
+  else if(pct>=.7){medal='🥇';stars='⭐⭐';title='Tolle*r Geschichtenerzähler*in';sub='Sehr gut! Noch etwas üben, dann wird es perfekt.';}
   else if(pct>=.5){medal='🥈';stars='⭐';title='Auf gutem Weg!';sub='Die Regeln sind klar — beim nächsten Mal klappt es noch besser!';}
   document.getElementById('e-medal').textContent=medal;
   document.getElementById('e-stars').textContent=stars;
