@@ -509,7 +509,7 @@ ${chips}
 
 /* 7 ── AFB 2: schleichen eingeben */
 {type:'task',afb:2,id:'t4',points:15,navIcon:'✏️',navLabel:'Aufg. 4',
-fbOk:'Perfekt! „schlich" — Vokalwechsel ei → i. Ein echter Erzählwort: „Emma schlich auf Zehenspitzen …"',
+fbOk:'Perfekt! „schlich" — Vokalwechsel ei → i. Ein echtes Erzählwort: „Emma schlich auf Zehenspitzen …"',
 fbBad:'Fast! „schleichen" ist ein starkes Verb: ei → i. Das Präteritum heißt „schlich". Kein -te!',
 render(){return `<div class="card">
 <span class="afb-pill">AFB 2 — Anwenden</span>
@@ -1083,8 +1083,8 @@ function showEnd(){
   const total=SCREENS.filter(s=>s.type!=='rule'&&s.type!=='wordspeicher').length;
   const pct=G.correct/total;
   let medal='📚',stars='💫',title='Weiter üben!',sub='Du bist auf dem richtigen Weg!';
-  if(pct>=.9){medal='🏆';stars='⭐⭐⭐';title='Meister/in der geheimnisvollen Geschichten!';sub='Das Präteritum sitzt — und deine Geschichte begeistert!';}
-  else if(pct>=.7){medal='🥇';stars='⭐⭐';title='Mutige/r Schreiber/in!';sub='Sehr gut! Noch etwas üben, dann wird es perfekt.';}
+  if(pct>=.9){medal='🏆';stars='⭐⭐⭐';title='Meistererzähler*in der geheimnisvollen Dinge!';sub='Das Präteritum sitzt — und deine Geschichte begeistert!';}
+  else if(pct>=.7){medal='🥇';stars='⭐⭐';title='Super Geschichtenerzähler*in!';sub='Sehr gut! Noch etwas üben, dann wird es perfekt.';}
   else if(pct>=.5){medal='🥈';stars='⭐';title='Auf gutem Weg!';sub='Die Regeln sind klar — beim nächsten Mal klappt es noch besser!';}
   document.getElementById('e-medal').textContent=medal;
   document.getElementById('e-stars').textContent=stars;
