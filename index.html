@@ -510,7 +510,7 @@ ${chips}
 /* 7 ── AFB 2: schleichen eingeben */
 {type:'task',afb:2,id:'t4',points:15,navIcon:'✏️',navLabel:'Aufg. 4',
 fbOk:'Perfekt! „schlich" — Vokalwechsel ei → i. Ein echtes Erzählwort: „Emma schlich auf Zehenspitzen …"',
-fbBad:'Fast! „schleichen" ist ein starkes Verb: ei → i. Das Präteritum heißt „schlich". Kein -te!',
+fbBad:'Fast! „schleichen" ist ein starkes Verb: ei → i.',
 render(){return `<div class="card">
 <span class="afb-pill">AFB 2 — Anwenden</span>
 <div class="scene-label">🕯️ Der geheimnisvolle Keller</div>
@@ -528,7 +528,7 @@ render(){return `<div class="card">
 /* 8 ── AFB 2: knacken eingeben */
 {type:'task',afb:2,id:'t5',points:15,navIcon:'✏️',navLabel:'Aufg. 5',
 fbOk:'Genau! „knackten" — schwaches Verb, Stamm (knack-) + -ten (Plural). Hörst du das schon?',
-fbBad:'Fast! „knacken" ist ein schwaches Verb: Stamm (knack-) + -ten (Plural) = „knackten".',
+fbBad:'Fast! „knacken" ist ein schwaches Verb: Stamm (knack-) + -ten (Plural).',
 render(){return `<div class="card">
 <span class="afb-pill">AFB 2 — Anwenden</span>
 <div class="scene-label">🌫️ Der nebelgraue Wald</div>
@@ -552,7 +552,7 @@ render(){return `<div class="card">
 <div class="scene-label">🚪 Die alte Tür</div>
 <div class="story-excerpt">„Plötzlich <u>hört</u> Emma ein <u>leises</u> Flüstern." → ins Präteritum umformen!</div>
 <div class="tip-box">💡 <strong>hören</strong> ist ein schwaches Verb: hör- + -te = <strong>hörte</strong></div>
-<div class="task-q">Tippe auf die Wörter in der richtigen Reihenfolge:</div>
+<div class="task-q">Bringe den gesamten Satz in die richtige Reihenfolge. Achte auch auf den Punkt!</div>
 <div class="wbank" id="wbank">
   ${['ein','hörte','Plötzlich','leises','Emma','Flüstern','.'].map((w,i)=>`<span class="wchip" id="wc${i}" onclick="placeW('${w}',${i})">${w}</span>`).join('')}
 </div>
